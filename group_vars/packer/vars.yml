@@ -1,0 +1,16 @@
+ansible_user: vmware
+ansible_ssh_pass: "{{ vault_ansible_ssh_pass }}"
+ansible_become_pass: "{{ vault_ansible_become_pass }}"
+
+
+ovf_zip_url: "http://build-squid.eng.vmware.com/build/mts/release/bora-2459827/publish/VMware-ovftool-4.1.0-2459827-lin.x86_64.zip"
+ovf_zip_md5: "63698e602af6e24640146a6592348c99"
+datastore:  nfs01
+network: VM-RegionA01-vDS-01
+vsphere_user: root
+vsphere_password: "{{ vault_ansible_become_pass }}"
+vcenter: 192.168.110.51
+datacenter: ha-datacenter
+cluster: esx-01a.corp.local
+#datacenter: VIO Datacenter
+#cluster: Management Cluster

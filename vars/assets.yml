@@ -1,0 +1,8 @@
+
+download_files: True
+
+assets:
+  VMware-ovftool-4.1.0-2459827-lin.x86_64.zip:
+    description: ovftool
+    checksum: 63698e602af6e24640146a6592348c99
+    url: http://build-squid.eng.vmware.com/build/mts/release/bora-2459827/publish/VMware-ovftool-4.1.0-2459827-lin.x86_64.zip
