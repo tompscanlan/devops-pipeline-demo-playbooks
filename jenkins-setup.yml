@@ -17,5 +17,12 @@
 - hosts: jenkins
   become: yes
   roles:
-    - geerlingguy.jenkins
-  post_tasks:
+    - role: geerlingguy.jenkins
+      jenkins_admin_username: admin
+      jenkins_admin_password: password
+      jenkins_plugins:
+        - scm-sync-configuration
+        - greenballs
+        - maven-plugin
+        - git
+    - role: jenkins-jobs
