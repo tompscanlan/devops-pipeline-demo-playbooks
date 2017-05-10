@@ -14,25 +14,8 @@
 #  limitations under the License.
 #
 ---
-- hosts: jenkins
-  tasks:
 
-    - name: Download packer config repo
-      command: git clone --branch add-packer https://github.com/tompscanlan/chaperone
-      args:
-        creates: ~/chaperone
-      become: no
+- include: get-and-host-assets.yml
+- include: packer-setup.yml
+- include: jenkins-setup.yml
 
-    - name: Build vmx
-      command: packer build ubuntu-16.04-amd64-local.json
-      args:
-        chdir: ~/chaperone/packer
-        creates: ~/chaperone/packer/base-vmware/chaperone.vmx
-      become: no
-
-    - name: Create ova
-      command: ovftool base-vmware/chaperone.vmx chaperone.ova
-      args:
-        chdir: ~/chaperone/packer
-        creates: chaperone.ova
-      become: no

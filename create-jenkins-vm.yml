@@ -15,7 +15,7 @@
 #
 ---
 
-- hosts: packer
+- hosts: jenkins
   become: yes
   vars:
     vmCount: 1
