@@ -14,7 +14,7 @@
 #  limitations under the License.
 #
 ---
-- hosts: jenkins
+- hosts: packer
   tasks:
 
     - name: Download packer config repo
