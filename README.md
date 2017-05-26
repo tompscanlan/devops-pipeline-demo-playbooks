@@ -52,4 +52,9 @@ Deploy all the things:
 ansible-playbook  -i inventory  site.yml
 ```
 
+**If you are not on the VPN, you'll need to download the ovftool binary from my.vmware.com
+and host it on the assets
+machine in /var/www/html/downloads/VMware-ovftool-4.1.0-2459827-lin.x86_64.zip. 
+Alternativly, specify your own location using `-e "ovf_zip_url=http://url.to/ovftool-binary`**
+
 See individual playbooks for various smaller chunks.
