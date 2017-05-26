@@ -17,7 +17,8 @@
 - hosts: assets
   become: yes
 
-  vars:
+  vars_files:
+    - vars/assets.yml
   roles:
 
     - role: assets
