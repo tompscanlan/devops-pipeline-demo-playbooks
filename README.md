@@ -46,10 +46,12 @@ Edit the `inventory` file as needed
 192.168.1.115
 ```
 
+Copy the ```extra_vars.yaml.sample``` file and customize as needed.
+
 Deploy all the things:
 
 ```bash
-ansible-playbook  -i inventory  site.yml
+ansible-playbook  -i inventory  site.yml --extra-vars "@extra_vars.yml"
 ```
 
 **If you are not on the VPN, you'll need to download the ovftool binary from my.vmware.com
