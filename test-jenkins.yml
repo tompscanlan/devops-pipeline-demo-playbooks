@@ -14,28 +14,6 @@
 #  limitations under the License.
 #
 ---
-- hosts: jenkins
-  become: yes
-  vars:
-    jenkins_admin_username: admin
-    jenkins_admin_password: password
-    jenkins_plugins:
-      - scm-sync-configuration
-      - greenballs
-      - maven-plugin
-      - git
-
-  roles:
-    - role: geerlingguy.jenkins
-      when: "ansible_os_family == 'RedHat'"
-      java_packages:
-        - java-1.8.0-openjdk
-
-    - role: geerlingguy.jenkins
-      when: "ansible_os_family == 'Debian'"
-      java_packages:
-        - openjdk-8-jdk
 
 
-    - role: jenkins-jobs
-
+- include: jenkins-setup.yml
