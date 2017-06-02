@@ -33,8 +33,6 @@
         state: present
       with_items:
         - git
-        - npm
-        - node.js
 
     - name: installing repo for Java 8 in Ubuntu
       apt_repository: repo='ppa:openjdk-r/ppa'
@@ -55,3 +53,10 @@
 
     - role: jenkins-jobs
       jenkins_key_file_src: files/jenkins-ssh-key
+
+  post_tasks:
+    - name: link node into place
+      file:
+        state: link
+        src: /usr/bin/nodejs
+        dest: /bin/node
