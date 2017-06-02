@@ -17,6 +17,7 @@
 - hosts: jenkins
   become: yes
   vars:
+
     jenkins_admin_username: admin
     jenkins_admin_password: password
     jenkins_plugins:
@@ -25,7 +26,21 @@
       - maven-plugin
       - git
 
+  pre_tasks:
+    - name: get prereq packages
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - git
+
+    - name: installing repo for Java 8 in Ubuntu
+      apt_repository: repo='ppa:openjdk-r/ppa'
+      when: "ansible_distribution == 'Ubuntu' and ansible_distribution_version | version_compare('16.04', '<')"
+
   roles:
+    - nodesource.node
+
     - role: geerlingguy.jenkins
       when: "ansible_os_family == 'RedHat'"
       java_packages:
@@ -36,6 +51,12 @@
       java_packages:
         - openjdk-8-jdk
 
-
     - role: jenkins-jobs
+      jenkins_key_file_src: files/jenkins-ssh-key
 
+  post_tasks:
+    - name: link node into place
+      file:
+        state: link
+        src: /usr/bin/nodejs
+        dest: /bin/node

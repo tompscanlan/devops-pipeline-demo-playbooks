@@ -1,2 +1,15 @@
+- nodesource.node
 - andrewrothstein.packer
+- geerlingguy.java
 - geerlingguy.jenkins
+- jdauphant.nginx
+- name: assets
+  src: git+https://github.com/vmware/ansible-role-assets
+- name: ovftool
+  src: git+https://github.com/vmware/ansible-role-ovftool
+- name: govc
+  src: git+https://github.com/vmware/ansible-role-govc
+- name: sudo
+  src: git+https://github.com/vmware/ansible-role-sudo
+- name: vmware-workstation
+  src: git+https://github.com/tompscanlan/ansible-role-vmware-workstation
