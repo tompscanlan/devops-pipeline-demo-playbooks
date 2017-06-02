@@ -17,5 +17,7 @@
 
 - include: get-and-host-assets.yml
 - include: packer-setup.yml
+  tags: [packer]
 - include: jenkins-setup.yml
+  tags: [jenkins]
 
